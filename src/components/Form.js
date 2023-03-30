@@ -1,16 +1,6 @@
 import { useState } from "react";
 
 function Form({ onSubmit }) {
-/*     const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-
-    const handleUsernameChange = (event) => {
-        setUsername(event.target.value);
-    }
-    const handlePasswordChange = (event) => {
-        setPassword(event.target.value);
-    } */
-
     const [inputs, setInputs] = useState({});
 
     const handleChange = (event) => {
