@@ -6,11 +6,12 @@ import getLogin from "./api";
 function App() {
     const [details, setDetails] = useState(null);
 
-    const handleSubmit = async (username, password) => {
-        const result = await getLogin(username, password);
+    const handleSubmit = async (inputs) => {
+        const result = await getLogin(inputs.username, inputs.password);
         setDetails(result);
+        console.log(details);
     }
-    
+
     return (
         <div>
             <Form onSubmit={handleSubmit} />

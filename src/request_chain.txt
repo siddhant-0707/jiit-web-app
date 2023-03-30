@@ -1,0 +1,18 @@
+https://webportal.jiit.ac.in:6011/StudentPortalAPI/StudentClassAttendance/getstudentInforegistrationforattendence
+PAYLOAD:
+clientid, instituteid, membertype, studentid
+RESPONSE:
+response.headerlist[0].stynumber
+response.semlist[0].registrationcode
+response.semlist[0].registrationid
+
+https://webportal.jiit.ac.in:6011/StudentPortalAPI/StudentClassAttendance/getstudentattendancedetail
+PAYLOAD:
+clientid, instituteid, registrationid, studentid, stynumber
+RESPONSE:
+response.studentattendancelist[0].LTpercantage
+Lpercentage
+Tpercentage
+subjectcode
+subjectid
+//for length of response.studentattendancelist

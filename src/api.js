@@ -7,7 +7,7 @@ const getLogin = async (username, password) => {
         "passwordotpvalue": password,
         "Modulename": "STUDENTMODULE"
     });
-    return response;
+    return response.data.response.regdata;
 };
 
 export default getLogin;
