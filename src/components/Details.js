@@ -1,31 +1,15 @@
-function Details({ detailsLogin, detailsRegister }) {
+function Details({ detailsLogin, detailsRegister, detailsAttendance }) {
     if (detailsLogin) {
         return (
             <div>
                 <p>Roll No: {detailsLogin.enrollmentno}</p>
                 <p>Name: {detailsLogin.name}</p>
-                {/* <p>Branch: {detailsRegister.headerlist[0].branchdesc}</p> */}
+                { detailsRegister && <p>Registration ID: {detailsRegister.semlist[0].registrationid}</p> }
+                { detailsAttendance && <p>Attendance: {detailsAttendance[0].LTpercantage}</p> }
             </div>
         )
     }
 
-}
-
-
-/* function Details({ detailsLogin, detailsRegister }) {
-    if (detailsLogin) {
-      return (
-        <div>
-          <p>Roll No: {detailsLogin.enrollmentno}</p>
-          <p>Name: {detailsLogin.name}</p>
-          {detailsRegister && detailsRegister.semlist && detailsRegister.semlist.length > 0 && (
-            <p>Registration Code: {detailsRegister.semlist[0].registrationcode}</p>
-          )}
-        </div>
-      );
-    }
-    return null;
-  } */
-  
+} 
 
 export default Details;
