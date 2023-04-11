@@ -2,7 +2,7 @@ import { useState } from "react";
 import Form from "./components/Form";
 import Details from "./components/Details";
 import AttendanceTable from "./components/AttendanceTable";
-import { getLogin, getSemDetails, getAttendanceDetails } from "./api_attendance";
+import { getLogin, getSemDetails, getAttendanceDetails, getTeacherName } from "./api_attendance";
 import { getSemesterCode } from "./api_exam";
 
 function App() {
@@ -24,10 +24,12 @@ function App() {
         console.log(resultAttendace);
         setDetailsAttendance(resultAttendace);
 
-        // const resultSemCode = await getSemesterCode(detailsLogin.clientid,
-        //     detailsLogin.institutelist[0].value, detailsLogin.memberid, detailsLogin.token);
-        // console.log(resultSemCode);
-        // setDetailsExam(resultSemCode);
+        const resultSemCode = await getSemesterCode(resultLogin.clientid,
+            resultLogin.institutelist[0].value, resultLogin.memberid, resultLogin.token);
+        console.log(resultSemCode);
+        setDetailsExam(resultSemCode);
+
+        const resultTeacherName = await getTeacherName();
     }
 
     return (

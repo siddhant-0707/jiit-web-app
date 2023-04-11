@@ -24,7 +24,7 @@ function Form({ onSubmit }) {
                 <br />
                 <input name="username" type="text" value={inputs.username || ""} onChange={handleChange} placeholder="enter username"/> <br />
                 <input name="password" type="password" value={inputs.password || ""} onChange={handleChange} placeholder="enter password"/> <br/>
-                <button type="submit">Do the thing</button>
+                <button type="submit">Submit!</button>
             </form>
         </div>
     );

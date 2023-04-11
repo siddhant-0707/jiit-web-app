@@ -10,18 +10,28 @@ let registrationcode = "";
 let registrationid = "";
 
 const getLogin = async (username, password) => {
+  try {
     const response = await axios.post('https://webportal.jiit.ac.in:6011/StudentPortalAPI/token/generate-token1', {
-        "otppwd": "PWD",
-        "username": username,
-        "passwordotpvalue": password,
-        "Modulename": "STUDENTMODULE"
+      "otppwd": "PWD",
+      "username": username,
+      "passwordotpvalue": password,
+      "Modulename": "STUDENTMODULE"
     });
-    clientid = response.data.response.regdata.clientid;
-    instituteid = response.data.response.regdata.institutelist[0].value;
-    membertype = response.data.response.regdata.membertype;
-    studentid = response.data.response.regdata.memberid;
-    token = response.data.response.regdata.token;
-    return response.data.response.regdata;
+    const regData = response.data.response.regdata;
+    if (!regData) {
+      throw new Error("Invalid response from server");
+    }
+    clientid = regData.clientid;
+    instituteid = regData.institutelist[0].value;
+    membertype = regData.membertype;
+    studentid = regData.memberid;
+    token = regData.token;
+    return regData;
+  } catch (error) {
+    console.error(error);
+    // You can customize the error handling as per your requirement
+    throw new Error("Failed to login");
+  }
 };
 
 const getSemDetails = async () => {
@@ -79,4 +89,27 @@ const getAttendanceDetails = async () => {
       }
 }
 
-export { getLogin, getSemDetails, getAttendanceDetails };
+const getTeacherName = async () => {
+  const options = {
+    method: 'POST',
+    url: 'https://webportal.jiit.ac.in:6011/StudentPortalAPI/reqsubfaculty/getfaculties',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + token
+    },
+    data: {
+      studentid: studentid,
+      instituteid: instituteid,
+      registrationid: registrationid
+    }
+  };
+  
+  axios.request(options).then(function (response) {
+    console.log(response);
+    return response;
+  }).catch(function (error) {
+    console.error(error);
+  });
+}
+
+export { getLogin, getSemDetails, getAttendanceDetails, getTeacherName };
