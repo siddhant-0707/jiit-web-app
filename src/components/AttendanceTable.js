@@ -1,10 +1,12 @@
+import 'bulma/css/bulma.css'
+
 const AttendanceTable = ({ data }) => {
   if (!data || data.length === 0) {
     return null;
   }
   
   return (
-    <table>
+    <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
       <thead>
         <tr>
           <th>Subject Code</th>
