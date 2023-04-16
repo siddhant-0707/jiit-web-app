@@ -92,6 +92,26 @@ const getAttendanceDetails = async () => {
   }
 };
 
+const getRegistrationList = async () => {
+  const options = {
+    method: "POST",
+    url: "https://webportal.jiit.ac.in:6011/StudentPortalAPI/reqsubfaculty/getregistrationList",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    },
+    data: { instituteid: instituteid, studentid: studentid },
+  };
+
+  try {
+    const response = await axios(options);
+    console.log(response.data.response);
+    return response.data.response;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 const getTeacherName = async () => {
   const options = {
     method: "POST",
@@ -107,43 +127,19 @@ const getTeacherName = async () => {
     },
   };
 
-  axios
-    .request(options)
-    .then(function (response) {
-      console.log(response);
-      return response;
-    })
-    .catch(function (error) {
-      console.error(error);
-    });
-};
-
-const getRegistrationList = async () => {
-  const options = {
-    method: "POST",
-    url: "https://webportal.jiit.ac.in:6011/StudentPortalAPI/reqsubfaculty/getregistrationList",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: "Bearer " + token,
-    },
-    data: { instituteid: instituteid, studentid: studentid },
-  };
-
-  axios
-    .request(options)
-    .then(function (response) {
-      console.log(response.data.response);
-      return response.data.response;
-    })
-    .catch(function (error) {
-      console.error(error);
-    });
+  try {
+    const response = await axios(options);
+    console.log(response);
+    return response.data.response;
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 export {
   getLogin,
   getSemDetails,
   getAttendanceDetails,
-  getTeacherName,
   getRegistrationList,
+  getTeacherName,
 };

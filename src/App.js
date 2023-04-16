@@ -6,7 +6,8 @@ import {
   getLogin,
   getSemDetails,
   getAttendanceDetails,
-  getRegistrationList
+  getRegistrationList,
+  getTeacherName,
 } from "./api_attendance";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
   const [detailsRegister, setDetailsRegister] = useState(null);
   const [detailsAttendance, setDetailsAttendance] = useState(null);
   const [detailsReg, setDetailsReg] = useState(null);
+  const [detailsTeacher, setDetailsTeacher] = useState(null);
 
   const handleSubmit = async (inputs) => {
     const resultLogin = await getLogin(inputs.username, inputs.password);
@@ -25,12 +27,16 @@ function App() {
     setDetailsRegister(resultRegistration);
 
     const resultAttendace = await getAttendanceDetails();
-    console.log(resultAttendace);
+    // console.log(resultAttendace);
     setDetailsAttendance(resultAttendace);
 
     const resultRegister = await getRegistrationList();
-    console.log(resultRegister);
+    // console.log(resultRegister);
     setDetailsReg(resultRegister);
+
+    const resultTeacher = await getTeacherName();
+    // console.log(resultTeacher);
+    setDetailsTeacher(resultTeacher);
   };
 
   return (
@@ -41,6 +47,7 @@ function App() {
         detailsRegister={detailsRegister}
         detailsAttendance={detailsAttendance}
         detailsReg={detailsReg}
+        detailsTeacher={detailsTeacher}
       />
       <AttendanceTable data={detailsAttendance} />
     </div>
