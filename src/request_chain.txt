@@ -16,3 +16,25 @@ Tpercentage
 subjectcode
 subjectid
 //for length of response.studentattendancelist
+
+
+getregistrationList
+https://webportal.jiit.ac.in:6011/StudentPortalAPI/reqsubfaculty/getregistrationList
+PAYLOAD:
+instituteid, studentid
+RESPONSE:
+response.registrations[0].registrationcode
+response.registrations[0].registrationcode
+response.registrations[0].registrationid
+
+getfaculties
+https://webportal.jiit.ac.in:6011/StudentPortalAPI/reqsubfaculty/getfaculties
+PAYLOAD:
+instituteid, registrationid, studentid
+RESPONSE:
+response.registrations[0].credits
+.employeename
+.subjectcode
+.subjectcomponentcode
+.subjectdesc
+.subjectid

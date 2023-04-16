@@ -1,4 +1,4 @@
-function Details({ detailsLogin, detailsRegister, detailsAttendance }) {
+function Details({ detailsLogin, detailsRegister, detailsReg }) {
     
     if (detailsLogin) {
         return (
@@ -6,7 +6,7 @@ function Details({ detailsLogin, detailsRegister, detailsAttendance }) {
                 <p>Roll No: {detailsLogin.enrollmentno}</p>
                 <p>Name: {detailsLogin.name}</p>
                 { detailsRegister && <p>Registration ID: {detailsRegister.semlist[0].registrationid}</p> }
-                {/* { detailsAttendance && <p>{detailsAttendance[0].subjectcode}  Attendance: {detailsAttendance[0].LTpercantage}</p> } */}
+                {/* { detailsReg && <p>Some ID: {detailsReg.registrations[0].registrationcode}</p> } */}
             </div>
         )
     }
