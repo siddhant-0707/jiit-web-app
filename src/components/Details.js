@@ -12,9 +12,9 @@ function Details({
         {detailsRegister && (
           <p>Registration ID: {detailsRegister.semlist[0].registrationid}</p>
         )}
-        {detailsReg && (
+{/*         {detailsReg && (
           <p>Some ID: {detailsReg.registrations[0].registrationid}</p>
-        )}
+        )} */}
       </div>
     );
   }

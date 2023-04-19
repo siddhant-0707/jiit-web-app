@@ -8,6 +8,7 @@ import {
   getAttendanceDetails,
   getRegistrationList,
   getTeacherName,
+  getSubjectAttendance,
 } from "./api_attendance";
 
 function App() {
@@ -27,16 +28,24 @@ function App() {
     setDetailsRegister(resultRegistration);
 
     const resultAttendace = await getAttendanceDetails();
-    // console.log(resultAttendace);
+    console.log(resultAttendace);
     setDetailsAttendance(resultAttendace);
 
     const resultRegister = await getRegistrationList();
-    // console.log(resultRegister);
+    console.log(resultRegister[0].registrationid);
     setDetailsReg(resultRegister);
 
-    const resultTeacher = await getTeacherName();
-    // console.log(resultTeacher);
+    const resultTeacher = await getTeacherName(
+      resultRegister[1].registrationid
+    );
+    console.log(resultTeacher);
     setDetailsTeacher(resultTeacher);
+    
+    const subjectid = detailsAttendance[0].subjectid;
+    
+    
+    const resultSubjectAttendance = await getSubjectAttendance(subjectid);
+    console.log(resultSubjectAttendance);
   };
 
   return (
