@@ -56,8 +56,8 @@ const getSemDetails = async () => {
     const response = await axios(options);
     // console.log(response);
     stynumber = response.data.response.headerlist[0].stynumber;
-    registrationcode = response.data.response.semlist[0].registrationcode;
-    registrationid = response.data.response.semlist[0].registrationid;
+    registrationcode = response.data.response.semlist[1].registrationcode;
+    registrationid = response.data.response.semlist[1].registrationid;
     // console.log(stynumber + " " + registrationcode + " " + registrationid);
     return response.data.response;
   } catch (error) {
